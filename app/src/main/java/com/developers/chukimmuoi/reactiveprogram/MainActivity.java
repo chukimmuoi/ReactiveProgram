@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity implements IConstants, View.
 
         map = new HashMap<>();
         map.put(DEVICE_ID_PARAM, DEVICE_ID_VALUES);
-        map.put(NUMBER_PARAM, String.valueOf(NUMBER_50_VALUES));
+        map.put(NUMBER_PARAM, String.valueOf(NUMBER_3000_VALUES));
         map.put(PAGE_PARAM, String.valueOf(PAGE_VALUES));
         map.put(LAST_UPDATE_PARAM, String.valueOf(LAST_UPDATE_VALUES));
-        map.put(SIGN_PARAM, SIGN_50_VALUES);
+        map.put(SIGN_PARAM, SIGN_3000_VALUES);
     }
 
     @Override
