@@ -8,22 +8,22 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_retrofit"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:text="Button"
         android:onClick="onClick"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        android:text="Retrofit"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btn_rxjava"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:text="Button1"
-        android:onClick="onClick"
-        tools:layout_editor_absoluteX="8dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:ignore="MissingConstraints" />
+        android:onClick="onClick"
+        android:text="RxJava"
+        app:layout_constraintTop_toBottomOf="@+id/btn_retrofit"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp" />
 </android.support.constraint.ConstraintLayout>

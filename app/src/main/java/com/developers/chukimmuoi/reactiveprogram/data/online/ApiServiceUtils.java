@@ -2,6 +2,8 @@ package com.developers.chukimmuoi.reactiveprogram.data.online;
 
 import com.developers.chukimmuoi.reactiveprogram.data.online.service.IApiService;
 
+import retrofit2.Retrofit;
+
 /**
  * @author : Hanet Electronics
  * @Skype : chukimmuoi
@@ -14,7 +16,7 @@ import com.developers.chukimmuoi.reactiveprogram.data.online.service.IApiService
 
 public class ApiServiceUtils {
 
-    public static IApiService getSongApi() {
-        return RetrofitClientManager.getClient().create(IApiService.class);
+    public static IApiService getSongApi(Retrofit retrofit) {
+        return retrofit.create(IApiService.class);
     }
 }
