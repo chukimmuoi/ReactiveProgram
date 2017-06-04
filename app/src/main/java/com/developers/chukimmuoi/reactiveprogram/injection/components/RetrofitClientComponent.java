@@ -1,6 +1,7 @@
 package com.developers.chukimmuoi.reactiveprogram.injection.components;
 
 import com.developers.chukimmuoi.reactiveprogram.MainActivity;
+import com.developers.chukimmuoi.reactiveprogram.injection.PerActivity;
 import com.developers.chukimmuoi.reactiveprogram.injection.modules.AppModule;
 import com.developers.chukimmuoi.reactiveprogram.injection.modules.RetrofitClientModule;
 
@@ -19,6 +20,7 @@ import dagger.Component;
  */
 
 @Singleton
+@PerActivity
 @Component(modules = {AppModule.class, RetrofitClientModule.class})
 public interface RetrofitClientComponent {
     void inject(MainActivity activity);
