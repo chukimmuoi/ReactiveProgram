@@ -1,7 +1,7 @@
 package com.developers.chukimmuoi.reactiveprogram.data.online.service;
 
 import com.developers.chukimmuoi.reactiveprogram.constants.IConstants;
-import com.developers.chukimmuoi.reactiveprogram.object.Result;
+import com.developers.chukimmuoi.reactiveprogram.data.model.Result;
 
 import java.util.Map;
 
