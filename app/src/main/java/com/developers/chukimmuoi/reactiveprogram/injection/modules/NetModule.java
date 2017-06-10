@@ -35,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 @Module
-public class RetrofitClientModule {
+public class NetModule {
 
     private static final int VALUES_READ_TIMEOUT = 60;
 
@@ -49,7 +49,7 @@ public class RetrofitClientModule {
      * @param isCallExactlyOnce true: use NetworkInterceptor (call 1 chain.proceed),
      *                          false: use Interceptor (call 1 or n chain.proceed).
      */
-    public RetrofitClientModule(String baseUrl, boolean isCallExactlyOnce) {
+    public NetModule(String baseUrl, boolean isCallExactlyOnce) {
         this.mBaseUrl = baseUrl;
         this.isCallExactlyOnce = isCallExactlyOnce;
     }

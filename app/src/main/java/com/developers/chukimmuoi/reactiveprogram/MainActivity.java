@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.developers.chukimmuoi.reactiveprogram.constants.IConstants;
-import com.developers.chukimmuoi.reactiveprogram.data.online.ApiServiceUtils;
+import com.developers.chukimmuoi.reactiveprogram.data.online.service.IApiService;
 import com.developers.chukimmuoi.reactiveprogram.object.Result;
 
 import java.util.HashMap;
@@ -23,7 +23,6 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity implements IConstants, View.OnClickListener {
 
@@ -32,21 +31,21 @@ public class MainActivity extends AppCompatActivity implements IConstants, View.
     private Map<String, String> map;
 
     @Inject
-    Retrofit retrofit;
+    IApiService iApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((BaseApplication) getApplication()).getRetrofitClientComponent().inject(this);
+        ((BaseApplication) getApplication()).getSongComponent().inject(this);
 
         setContentView(R.layout.activity_main);
 
         map = new HashMap<>();
         map.put(DEVICE_ID_PARAM, DEVICE_ID_VALUES);
-        map.put(NUMBER_PARAM, String.valueOf(NUMBER_3000_VALUES));
+        map.put(NUMBER_PARAM, String.valueOf(NUMBER_50_VALUES));
         map.put(PAGE_PARAM, String.valueOf(PAGE_VALUES));
         map.put(LAST_UPDATE_PARAM, String.valueOf(LAST_UPDATE_VALUES));
-        map.put(SIGN_PARAM, SIGN_3000_VALUES);
+        map.put(SIGN_PARAM, SIGN_50_VALUES);
     }
 
     @Override
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements IConstants, View.
         switch (v.getId()) {
             //TODO: Retrofit
             case R.id.btn_retrofit:
-                Call<Result> callRetrofit = ApiServiceUtils.getSongApi(retrofit).listFromLastUpdate(map);
+                Call<Result> callRetrofit = iApiService.listFromLastUpdate(map);
                 callRetrofit.enqueue(new Callback<Result>() {
                     @Override
                     public void onResponse(Call<Result> call, Response<Result> response) {
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements IConstants, View.
                 break;
             //TODO: RxJava, RxAndroid.
             case R.id.btn_rxjava:
-                Observable<Result> callRxJava = ApiServiceUtils.getSongApi(retrofit).listFromLastUpdateRx(map);
+                Observable<Result> callRxJava = iApiService.listFromLastUpdateRx(map);
                 callRxJava.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Observer<Result>() {

@@ -2,10 +2,13 @@ package com.developers.chukimmuoi.reactiveprogram;
 
 import android.app.Application;
 
-import com.developers.chukimmuoi.reactiveprogram.injection.components.DaggerRetrofitClientComponent;
-import com.developers.chukimmuoi.reactiveprogram.injection.components.RetrofitClientComponent;
+import com.developers.chukimmuoi.reactiveprogram.injection.components.DaggerNetComponent;
+import com.developers.chukimmuoi.reactiveprogram.injection.components.DaggerSongComponent;
+import com.developers.chukimmuoi.reactiveprogram.injection.components.NetComponent;
+import com.developers.chukimmuoi.reactiveprogram.injection.components.SongComponent;
 import com.developers.chukimmuoi.reactiveprogram.injection.modules.AppModule;
-import com.developers.chukimmuoi.reactiveprogram.injection.modules.RetrofitClientModule;
+import com.developers.chukimmuoi.reactiveprogram.injection.modules.NetModule;
+import com.developers.chukimmuoi.reactiveprogram.injection.modules.SongModule;
 
 /**
  * @author : Hanet Electronics
@@ -21,19 +24,30 @@ public class BaseApplication extends Application {
 
     private static final String BASE_URL = "http://api.hanet.com/karaoke/";
 
-    private RetrofitClientComponent mRetrofitClientComponent;
+    private NetComponent mNetComponent;
+
+    private SongComponent mSongComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        mRetrofitClientComponent = DaggerRetrofitClientComponent.builder()
+        mNetComponent = DaggerNetComponent.builder()
                 .appModule(new AppModule(this))
-                .retrofitClientModule(new RetrofitClientModule(BASE_URL, false))
+                .netModule(new NetModule(BASE_URL, false))
+                .build();
+
+        mSongComponent = DaggerSongComponent.builder()
+                .netComponent(mNetComponent)
+                .songModule(new SongModule())
                 .build();
     }
 
-    public RetrofitClientComponent getRetrofitClientComponent() {
-        return mRetrofitClientComponent;
+    public NetComponent getNetComponent() {
+        return mNetComponent;
+    }
+
+    public SongComponent getSongComponent() {
+        return mSongComponent;
     }
 }

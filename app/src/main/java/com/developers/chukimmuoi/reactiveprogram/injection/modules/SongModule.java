@@ -1,7 +1,10 @@
-package com.developers.chukimmuoi.reactiveprogram.data.online;
+package com.developers.chukimmuoi.reactiveprogram.injection.modules;
 
 import com.developers.chukimmuoi.reactiveprogram.data.online.service.IApiService;
+import com.developers.chukimmuoi.reactiveprogram.injection.UserScope;
 
+import dagger.Module;
+import dagger.Provides;
 import retrofit2.Retrofit;
 
 /**
@@ -11,12 +14,14 @@ import retrofit2.Retrofit;
  * @Email : muoick@hanet.com
  * @Website : http://hanet.com/
  * @Project : ReactiveProgram
- * Created by chukimmuoi on 5/7/17.
+ * Created by chukimmuoi on 6/4/17.
  */
 
-public class ApiServiceUtils {
-
-    public static IApiService getSongApi(Retrofit retrofit) {
+@Module
+public class SongModule {
+    @Provides
+    @UserScope
+    public IApiService providesSong(Retrofit retrofit){
         return retrofit.create(IApiService.class);
     }
 }
