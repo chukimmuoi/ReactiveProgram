@@ -1,6 +1,6 @@
 package com.developers.chukimmuoi.reactiveprogram.injection.modules;
 
-import com.developers.chukimmuoi.reactiveprogram.data.online.service.IApiService;
+import com.developers.chukimmuoi.reactiveprogram.data.online.service.ApiService;
 import com.developers.chukimmuoi.reactiveprogram.injection.UserScope;
 
 import dagger.Module;
@@ -21,7 +21,7 @@ import retrofit2.Retrofit;
 public class SongModule {
     @Provides
     @UserScope
-    public IApiService providesSong(Retrofit retrofit){
-        return retrofit.create(IApiService.class);
+    public ApiService providesSong(Retrofit retrofit){
+        return retrofit.create(ApiService.class);
     }
 }

@@ -23,7 +23,7 @@ import retrofit2.http.Query;
  * Created by chukimmuoi on 5/7/17.
  */
 
-public interface IApiService {
+public interface ApiService {
 
     // eg: @Url: DO NOT start with "/".
 
