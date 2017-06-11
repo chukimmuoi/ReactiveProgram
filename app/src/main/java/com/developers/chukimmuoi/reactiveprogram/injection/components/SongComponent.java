@@ -15,7 +15,14 @@ import dagger.Component;
  * @Project : ReactiveProgram
  * Created by chukimmuoi on 6/4/17.
  */
-
+/**
+ * Mối quan hệ cha con Dependent Components vs Sub Components
+ * Cha (Subcomponents): NetComponent
+ * Con (Dependent Components): SongModule
+ *
+ * Sử dụng @UserScope: Xác định phạm vi, là cần thiết khi sử dụng Sub Components
+ * Khi sử dụng Scope: @Singleton sẽ bị vô hiệu.
+ * */
 @UserScope
 @Component(dependencies = NetComponent.class, modules = SongModule.class)
 public interface SongComponent {
