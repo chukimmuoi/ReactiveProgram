@@ -18,6 +18,8 @@ import javax.inject.Qualifier;
 
 /**
  * <==>@Named("activity_context")</==>
+ *
+ * @Qualifier: dùng để phân biệt các đối tượng cùng loại nhưng mục đích sử dụng khác nhau.
  * */
 @Qualifier
 @Documented
